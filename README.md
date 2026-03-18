@@ -18,10 +18,8 @@ O sistema também possui:
 - **LED de ocupado** indicando se há pessoas dentro do ambiente
 - **LED de entrada** indicando evento de entrada
 - **LED de saída** indicando evento de saída
-- **LCD 16x2** exibindo:
-  - total de entradas
-  - total de saídas
-  - quantidade de pessoas dentro do ambiente
+- **RELE 5v/220 controle de equipamentos externos
+
 - **botão de reset** para zerar os contadores
 
 ## Funcionalidades
@@ -29,8 +27,7 @@ O sistema também possui:
 - Detecta entrada pela ordem correta dos sensores
 - Detecta saída pela ordem correta dos sensores
 - Mantém a contagem de pessoas dentro do ambiente
-- Só permite registrar saída se houver pelo menos uma pessoa dentro
-- Exibe informações em um display LCD 16x2
+- Desliga equipamento externo através de relé
 - Indica eventos por LEDs
 - Possui tempo máximo de 2 segundos entre sensores para validar a sequência
 
@@ -49,7 +46,6 @@ O sistema também possui:
   - saída
 - 4 resistores de **330 Ω** para os LEDs de indicação
 - 1 display **LCD 16x2**
-- 1 potenciômetro de **10 kΩ** para contraste do LCD
 - 1 botão de reset
 - Protoboard e jumpers
 - Fonte de **5 V**
@@ -104,32 +100,11 @@ Após uma contagem válida, a porta fica bloqueada até que os dois sensores ret
 | Pino PIC | Função |
 |---|---|
 | RC1 (pino 16) | LED_STATUS |
-| RC2 (pino 17) | LED_OCUPADO |
+| RC2 (pino 17) | LED_OCUPADO/ saida para relé  |
 | RC3 (pino 18) | LED_ENTRADA |
 | RC4 (pino 23) | LED_SAIDA |
 
-### LCD 16x2
 
-O LCD está ligado em **modo 8 bits**, conforme o esquemático da placa.
-
-| Pino LCD | Função | Ligação no PIC |
-|---|---|---|
-| 1 | GND | GND |
-| 2 | VCC | +5 V |
-| 3 | VO | cursor do potenciômetro 10 kΩ |
-| 4 | RS | RE0 |
-| 5 | RW | RE1 |
-| 6 | EN | RE2 |
-| 7 | D0 | RD0 |
-| 8 | D1 | RD1 |
-| 9 | D2 | RD2 |
-| 10 | D3 | RD3 |
-| 11 | D4 | RD4 |
-| 12 | D5 | RD5 |
-| 13 | D6 | RD6 |
-| 14 | D7 | RD7 |
-| 15 | BLA | +5 V |
-| 16 | BLK | GND |
 
 ## Montagem dos Sensores LDR
 
